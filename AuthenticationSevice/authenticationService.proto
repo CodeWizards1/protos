@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "authentication/";
+option go_package = "genproto/AuthentificationService";
 
 package Authentication;
 
