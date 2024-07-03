@@ -5,15 +5,15 @@ option go_package = "genproto/SustainabilityService";
 package SustainabilityService;
 
 /*
-- POST /api/impact/log
-- GET /api/users/{id}/impact
-- GET /api/communities/{id}/impact
-- GET /api/challenges
-- POST /api/challenges/{id}/join
-- PUT /api/challenges/{id}/progress
-- GET /api/users/{id}/challenges
-- GET /api/leaderboard/users
-- GET /api/leaderboard/communities
+- 1 POST /api/impact/log
+- 2 GET /api/users/{id}/impact
+- 3`GET /api/communities/{id}/impact
+- 4`GET /api/challenges
+- 5`POST /api/challenges/{id}/join
+- 6`PUT /api/challenges/{id}/progress
+- 7`GET /api/users/{id}/challenges
+- 8`GET /api/leaderboard/users
+- 9`GET /api/leaderboard/communities
 */
 
 service SustainabilityService {
