@@ -8,11 +8,8 @@ service UserManagementService {
     rpc GetUserById(IdUserRequest) returns (UserResponse) {}
     rpc UpdateUserById(UpdateUserRequest) returns (UserResponse) {}
     rpc DeleteUserById(IdUserRequest) returns (DeleteUserResponse) {}
-    rpc GetUserProfile(IdUserRequest) returns (UserProfileResponse) {}
-    rpc UpdateUserProfile(UserProfileRequest) returns (UserProfileResponse) {}
     rpc GetUserProfileById(IdUserRequest) returns (UserProfileResponse) {}
-    rpc UpdateUserProfileById(UserProfileRequest) returns (UserProfileResponse) {}
-    
+    rpc UpdateUserProfileById(UserProfile) returns (UserProfileResponse) {} 
 }
 
 // User
@@ -43,19 +40,28 @@ message UserResponse {
 // Profile
 
 message UserProfile {
+    string user_id = 1;
     string full_name = 2;
     string bio = 3;
     string expertise = 4;
     string location = 5;
     string avatar_url = 6;
+    string created_at = 7;
+    string updated_at = 8;
 }
 
 message UserProfileRequest {
     string user_id = 1;
-    UserProfile user_profile = 2;
+    
 }
 
 message UserProfileResponse {
     string user_id = 1;
-    UserProfile user_profile = 2;
+    string full_name = 2;
+    string bio = 3;
+    string expertise = 4;
+    string location = 5;
+    string avatar_url = 6;
+    string created_at = 7;
+    string updated_at = 8;
 }
