@@ -5,14 +5,23 @@ option go_package = "genproto/CommunityService";
 package CommunityServer;
 
 service CommunityService {
+    // 1
     rpc CreateCommunity(CreateCommunityRequest) returns (CreateCommunityResponse) {}
+    // 2
     rpc GetCommunityBy(GetCommunityRequest) returns (GetCommunityResponse) {}
+    // 3
     rpc UpdateCommunity(UpdateCommunityRequest) returns (UpdateCommunityResponse) {}
+    // 4
     rpc DeleteCommunity(DeleteCommunityRequest) returns (DeleteCommunityResponse) {}
+    // 5
     rpc GetAllCommunity(GetAllCommunityRequest) returns (GetAllCommunityResponse) {}
+    // 6
     rpc JoinCommunity(JoinCommunityRequest) returns (JoinCommunityResponse) {}
+    // 7
     rpc LeaveCommunity(LeaveCommunityRequest) returns (LeaveCommunityResponse) {}
+    // 8
     rpc CreateCommunityEvent(CreateCommunityEventRequest) returns (CreateCommunityEventResponse) {}
+    // 9
     rpc GetCommunityEvent(GetCommunityEventRequest) returns (GetCommunityEventResponse) {}
 }
 

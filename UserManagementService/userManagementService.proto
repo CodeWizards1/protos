@@ -5,33 +5,26 @@ option go_package = "genproto/UserManagementService";
 package User;
 
 service UserManagementService {
+    rpc DoesUserExists (IdUserRequest) returns (DoesUserExistsResponse) {}
+    rpc CreateUser (UserRequest) returns (UserResponse) {}
+    rpc Login (AutorizationRequest) returns (AutorizationResponse) {}    
     rpc GetUserById(IdUserRequest) returns (UserResponse) {}
     rpc UpdateUserById(UpdateUserRequest) returns (UserResponse) {}
     rpc DeleteUserById(IdUserRequest) returns (DeleteUserResponse) {}
-    rpc GetUserProfile(IdUserRequest) returns (UserProfileResponse) {}
-    rpc UpdateUserProfile(UserProfileRequest) returns (UserProfileResponse) {}
     rpc GetUserProfileById(IdUserRequest) returns (UserProfileResponse) {}
-    rpc UpdateUserProfileById(UserProfileRequest) returns (UserProfileResponse) {}
-    
+    rpc UpdateUserProfileById(UpdateUserProfileRequest) returns (UserProfileResponse) {} 
+}
+// Chech User
+message DoesUserExistsResponse{
+    bool message = 1;
 }
 
-// User
-
-message IdUserRequest {
-    string user_id = 1;
+// Auth
+message UserRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
 }
-
-message UpdateUserRequest{
-    string user_id = 1;
-    string username = 2;
-    string email = 3;
-    string password = 4;
-}
-
-message DeleteUserResponse {
-    string message = 1;
-}
-
 message UserResponse {
     string user_id = 1;
     string username = 2;
@@ -40,22 +33,52 @@ message UserResponse {
     string updated_at = 5;
 }
 
-// Profile
+message AutorizationRequest {
+    string email = 1;
+    string password = 2;
+}
 
-message UserProfile {
+message AutorizationResponse {
+    string message = 1;
+}
+
+// User
+message IdUserRequest {
+    string user_id = 1;
+}
+message UpdateUserRequest{
+    string user_id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+}
+message DeleteUserResponse {
+    string message = 1;
+}
+
+// Profile
+message UpdateUserProfileRequest {
+    string user_id = 1;
     string full_name = 2;
     string bio = 3;
     string expertise = 4;
     string location = 5;
     string avatar_url = 6;
+    string created_at = 7;
+    string updated_at = 8;
 }
-
 message UserProfileRequest {
     string user_id = 1;
-    UserProfile user_profile = 2;
+    
 }
 
 message UserProfileResponse {
     string user_id = 1;
-    UserProfile user_profile = 2;
+    string full_name = 2;
+    string bio = 3;
+    string expertise = 4;
+    string location = 5;
+    string avatar_url = 6;
+    string created_at = 7;
+    string updated_at = 8;
 }

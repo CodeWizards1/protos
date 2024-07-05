@@ -5,6 +5,7 @@ option go_package = "genproto/GardenManagementService";
 package GardenManagementService;
 
 service GardenManagementService {
+    rpc DoesGardenExist (IdRequest) returns (DoesGardenExistResponse) {}
     // 1
     rpc CreateGarden (GardenRequest) returns (GardenResponse) {}
     // 2
@@ -42,6 +43,9 @@ service GardenManagementService {
 - POST /api/plants/{id}/care-logs 
 - GET /api/plants/{id}/care-logs
 */
+message DoesGardenExistResponse {
+    bool exists = 1;
+}
 
 message IdRequest {
     string id = 1;
