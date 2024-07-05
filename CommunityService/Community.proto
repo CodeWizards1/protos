@@ -5,24 +5,16 @@ option go_package = "genproto/CommunityService";
 package CommunityServer;
 
 service CommunityService {
-    // 1
     rpc CreateCommunity(CreateCommunityRequest) returns (CreateCommunityResponse) {}
-    // 2
     rpc GetCommunityBy(GetCommunityRequest) returns (GetCommunityResponse) {}
-    // 3
     rpc UpdateCommunity(UpdateCommunityRequest) returns (UpdateCommunityResponse) {}
-    // 4
     rpc DeleteCommunity(DeleteCommunityRequest) returns (DeleteCommunityResponse) {}
-    // 5
     rpc GetAllCommunity(GetAllCommunityRequest) returns (GetAllCommunityResponse) {}
-    // 6
     rpc JoinCommunity(JoinCommunityRequest) returns (JoinCommunityResponse) {}
-    // 7
     rpc LeaveCommunity(LeaveCommunityRequest) returns (LeaveCommunityResponse) {}
-    // 8
     rpc CreateCommunityEvent(CreateCommunityEventRequest) returns (CreateCommunityEventResponse) {}
-    // 9
     rpc GetCommunityEvent(GetCommunityEventRequest) returns (GetCommunityEventResponse) {}
+    rpc IsUserValid(is_community_valid_request) returns (is_community_valid_response){}
 }
 
 service ForumService {
@@ -59,6 +51,14 @@ message Event {
     string location = 8;
     string created_at = 9;
     string updated_at = 10;
+}
+
+message is_community_valid_request {
+    string id = 1;
+}
+
+message is_community_valid_response {
+    bool valid = 1;
 }
 
 message JoinCommunityRequest {
