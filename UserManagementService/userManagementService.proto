@@ -11,7 +11,7 @@ service UserManagementService {
     rpc UpdateUserById(UpdateUserRequest) returns (UserResponse) {}
     rpc DeleteUserById(IdUserRequest) returns (DeleteUserResponse) {}
     rpc GetUserProfileById(IdUserRequest) returns (UserProfileResponse) {}
-    rpc UpdateUserProfileById(UserProfile) returns (UserProfileResponse) {} 
+    rpc UpdateUserProfileById(UpdateUserProfileRequest) returns (UserProfileResponse) {} 
 }
 
 // Auth
@@ -52,7 +52,7 @@ message DeleteUserResponse {
 }
 
 // Profile
-message UserProfile {
+message UpdateUserProfileRequest {
     string user_id = 1;
     string full_name = 2;
     string bio = 3;
