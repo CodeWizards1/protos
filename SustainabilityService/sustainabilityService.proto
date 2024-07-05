@@ -41,17 +41,19 @@ service SustainabilityService {
 // 1
 message LogImpactRequest{
     string user_id = 1;
-    string category = 2;
-    float amount = 3;
-    string unit = 4;
+    string community_id = 2;
+    string category = 3;
+    float amount = 4;
+    string unit = 5;
 }
 message LogImpactResponse{
     string id = 1;
     string user_id = 2;
-    string category = 3;
-    float amount = 4;
-    string unit = 5;
-    string logged_at = 6;
+    string community_id = 3;
+    string category = 4;
+    float amount = 5;
+    string unit = 6;
+    string logged_at = 7;
 }
 // 2
 message GetUserImpactRequest{
@@ -76,28 +78,32 @@ message GetChallengesResponse{
 // 5
 message JoinChallengeRequest{
     string user_id = 1;
-    string challenge_id = 2;
-    float progres = 3;
-    string completed_at = 4;
+    string community_id = 2;
+    string challenge_id = 3;
+    float progres = 4;
+    string completed_at = 5;
 }
 message JoinChallengeResponse{
     string user_id = 1;
-    string challenge_id = 2;
-    float progres = 3;
-    string completed_at = 4;
+    string community_id = 2;
+    string challenge_id = 3;
+    float progres = 4;
+    string completed_at = 5;
 }
 // 6
 message UpdateChallengeProgressRequest{
     string user_id = 1;
-    string challenge_id = 2;
-    float progres = 3;
-    string completed_at = 4;
+    string community_id = 2;
+    string challenge_id = 3;
+    float progres = 4;
+    string completed_at = 5;
 }
 message UpdateChallengeProgressResponse{
     string user_id = 1;
-    string challenge_id = 2;
-    float progres = 3;
-    string completed_at = 4;
+    string community_id = 2;
+    string challenge_id = 3;
+    float progres = 4;
+    string completed_at = 5;
 }
 // 7
 message GetUserChallengesRequest{
@@ -108,17 +114,15 @@ message GetUserChallengesResponse{
 }
 // 8
 message GetUserLeaderboardRequest{
-    string user_id = 1;
 }
 message GetUserLeaderboardResponse{
-    repeated GetUserChallengesResponse leaderboard = 1;
+    repeated LeaderboardUser leaderboard = 1;
 }
 // 9
 message GetCommunityLeaderboardRequest{
-    string community_id = 1;
 }
 message GetCommunityLeaderboardResponse{
-    repeated GetUserChallengesResponse leaderboard = 1;
+    repeated LeaderboardCommunity leaderboard = 1;
 }
 // 10
 message PostChallengesRequest{
@@ -137,4 +141,14 @@ message PostChallengesResponse{
     string goal_unit = 5;
     string start_date = 6;
     string end_date = 7;
+}
+// Leaderboard
+message LeaderboardUser{   
+    string user_id = 1;
+    string community_id = 2;
+    float progres = 3;
+}
+message LeaderboardCommunity{
+    string community_id = 2;
+    float progres = 3;
 }
