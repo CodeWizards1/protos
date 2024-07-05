@@ -5,6 +5,8 @@ option go_package = "genproto/UserManagementService";
 package User;
 
 service UserManagementService {
+    rpc CreateUser (UserRequest) returns (UserResponse) {}
+    rpc Login (AutorizationRequest) returns (AutorizationResponse) {}    
     rpc GetUserById(IdUserRequest) returns (UserResponse) {}
     rpc UpdateUserById(UpdateUserRequest) returns (UserResponse) {}
     rpc DeleteUserById(IdUserRequest) returns (DeleteUserResponse) {}
@@ -12,23 +14,12 @@ service UserManagementService {
     rpc UpdateUserProfileById(UserProfile) returns (UserProfileResponse) {} 
 }
 
-// User
-
-message IdUserRequest {
-    string user_id = 1;
+// Auth
+message UserRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
 }
-
-message UpdateUserRequest{
-    string user_id = 1;
-    string username = 2;
-    string email = 3;
-    string password = 4;
-}
-
-message DeleteUserResponse {
-    string message = 1;
-}
-
 message UserResponse {
     string user_id = 1;
     string username = 2;
@@ -37,8 +28,30 @@ message UserResponse {
     string updated_at = 5;
 }
 
-// Profile
+message AutorizationRequest {
+    string email = 1;
+    string password = 2;
+}
 
+message AutorizationResponse {
+    string message = 1;
+}
+
+// User
+message IdUserRequest {
+    string user_id = 1;
+}
+message UpdateUserRequest{
+    string user_id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+}
+message DeleteUserResponse {
+    string message = 1;
+}
+
+// Profile
 message UserProfile {
     string user_id = 1;
     string full_name = 2;
@@ -49,7 +62,6 @@ message UserProfile {
     string created_at = 7;
     string updated_at = 8;
 }
-
 message UserProfileRequest {
     string user_id = 1;
     
