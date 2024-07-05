@@ -5,6 +5,7 @@ option go_package = "genproto/UserManagementService";
 package User;
 
 service UserManagementService {
+    rpc DoesUserExists (IdUserRequest) returns (DoesUserExistsResponse) {}
     rpc CreateUser (UserRequest) returns (UserResponse) {}
     rpc Login (AutorizationRequest) returns (AutorizationResponse) {}    
     rpc GetUserById(IdUserRequest) returns (UserResponse) {}
@@ -12,6 +13,10 @@ service UserManagementService {
     rpc DeleteUserById(IdUserRequest) returns (DeleteUserResponse) {}
     rpc GetUserProfileById(IdUserRequest) returns (UserProfileResponse) {}
     rpc UpdateUserProfileById(UpdateUserProfileRequest) returns (UserProfileResponse) {} 
+}
+// Chech User
+message DoesUserExistsResponse{
+    bool message = 1;
 }
 
 // Auth
